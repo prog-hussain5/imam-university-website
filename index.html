@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="نظام البحث عن الطلاب - جامعة الإمام جعفر الصادق - قسم هندسة تقنيات الحاسوب" />
+  <title>جامعة الإمام جعفر الصادق - قسم هندسة تقنيات الحاسوب</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body data-lang="ar">
+
+  <!-- ══════════════════════════════════════════════
+       HEADER
+       ══════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-inner container">
+
+      <!-- Brand -->
+      <div class="header-brand">
+        <div class="logo-container">
+          <img src="assets/logo-200.png" alt="شعار جامعة الإمام جعفر الصادق" class="logo" id="universityLogo" />
+        </div>
+        <div class="header-text">
+          <h1 class="university-name" data-i18n="universityName">جامعة الإمام جعفر الصادق</h1>
+          <p class="department-name" data-i18n="department">قسم هندسة تقنيات الحاسوب</p>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="header-controls">
+        <button class="btn-control lang-toggle" id="langToggle" title="Switch Language / تبديل اللغة">
+          <span class="lang-icon">🌐</span>
+          <span data-i18n="langToggle">English</span>
+        </button>
+        <button class="btn-control theme-toggle" id="themeToggle" title="Toggle Theme">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════════
+       HERO / SEARCH SECTION
+       ══════════════════════════════════════════════ -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+
+        <h2 class="hero-title" data-i18n="searchTitle">نظام البحث عن الطلاب</h2>
+        <p class="hero-subtitle" data-i18n="searchSubtitle">ابحث عن معلومات الطلاب بسرعة وسهولة داخل القسم</p>
+
+        <!-- Search Card -->
+        <div class="search-card">
+
+          <!-- Search bar -->
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="ابحث عن اسم الطالب..."
+              data-i18n-placeholder="searchPlaceholder"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button class="clear-btn" id="clearSearch" title="مسح" style="opacity:0">✕</button>
+          </div>
+
+          <!-- Filters Row -->
+          <div class="filters-row">
+
+            <!-- Stage -->
+            <div class="filter-group">
+              <label class="filter-label" for="stageFilter" data-i18n="filterStage">المرحلة</label>
+              <select class="filter-select" id="stageFilter">
+                <option value="" data-i18n="allStages">جميع المراحل</option>
+                <option value="الأولى"  data-i18n="stage1">المرحلة الأولى</option>
+                <option value="الثانية" data-i18n="stage2">المرحلة الثانية</option>
+                <option value="الثالثة" data-i18n="stage3">المرحلة الثالثة</option>
+                <option value="الرابعة" data-i18n="stage4">المرحلة الرابعة</option>
+              </select>
+            </div>
+
+            <!-- Subject -->
+            <div class="filter-group">
+              <label class="filter-label" for="subjectFilter" data-i18n="filterSubject">المادة</label>
+              <select class="filter-select" id="subjectFilter">
+                <option value="" data-i18n="allSubjects">جميع المواد</option>
+              </select>
+            </div>
+
+            <!-- Year -->
+            <div class="filter-group">
+              <label class="filter-label" for="yearFilter" data-i18n="filterYear">السنة الدراسية</label>
+              <select class="filter-select" id="yearFilter">
+                <option value=""         data-i18n="allYears">جميع السنوات</option>
+                <option value="2022-2023">2022-2023</option>
+                <option value="2023-2024">2023-2024</option>
+                <option value="2024-2025">2024-2025</option>
+              </select>
+            </div>
+
+            <!-- Actions -->
+            <div class="filter-group filter-actions">
+              <button class="btn btn-primary" id="searchBtn" data-i18n="searchBtn">🔍 بحث</button>
+              <button class="btn btn-secondary" id="resetBtn" data-i18n="resetBtn">↺ إعادة تعيين</button>
+            </div>
+
+          </div><!-- /filters-row -->
+
+        </div><!-- /search-card -->
+
+      </div><!-- /hero-content -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       STATS SECTION
+       ══════════════════════════════════════════════ -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <div class="stat-icon">👨‍🎓</div>
+          <div class="stat-info">
+            <span class="stat-value" id="totalStudentsStat">—</span>
+            <span class="stat-label" data-i18n="totalStudents">إجمالي الطلاب</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <div class="stat-info">
+            <span class="stat-value" id="filteredCountStat">—</span>
+            <span class="stat-label" data-i18n="filteredCount">نتائج البحث</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-info">
+            <span class="stat-value" id="avgGradeStat">—</span>
+            <span class="stat-label" data-i18n="avgGrade">معدل الدرجات</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <div class="stat-info">
+            <span class="stat-value" id="passRateStat">—</span>
+            <span class="stat-label" data-i18n="passRate">نسبة النجاح</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       RESULTS SECTION
+       ══════════════════════════════════════════════ -->
+  <section class="results-section">
+    <div class="container">
+
+      <!-- Results Header -->
+      <div class="results-header">
+
+        <div class="results-info">
+          <h3 class="results-title" data-i18n="resultsTitle">نتائج البحث</h3>
+          <span class="results-count">
+            <span data-i18n="showingText">عرض</span>
+            <strong id="showingFrom">—</strong>–<strong id="showingTo">—</strong>
+            <span data-i18n="ofText">من</span>
+            <strong id="totalCount">—</strong>
+          </span>
+        </div>
+
+        <!-- Table Controls -->
+        <div class="table-controls">
+
+          <div class="rows-per-page">
+            <label for="pageSizeSelect" data-i18n="rowsPerPage">صفوف في الصفحة:</label>
+            <select id="pageSizeSelect" class="filter-select small">
+              <option value="10">10</option>
+              <option value="25" selected>25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+
+          <!-- Grade legend -->
+          <div class="grade-legend">
+            <span class="legend-item excellent" data-i18n="excellent">ممتاز</span>
+            <span class="legend-item very-good"  data-i18n="veryGood">جيد جداً</span>
+            <span class="legend-item good"       data-i18n="good">جيد</span>
+            <span class="legend-item pass"       data-i18n="pass">مقبول</span>
+            <span class="legend-item fail"       data-i18n="fail">راسب</span>
+          </div>
+
+        </div><!-- /table-controls -->
+      </div><!-- /results-header -->
+
+      <!-- Table Wrapper -->
+      <div class="table-wrapper" id="tableWrapper">
+        <div class="table-scroll">
+
+          <!-- No Results -->
+          <div class="no-results hidden" id="noResults">
+            <div class="no-results-icon">🔍</div>
+            <h4 data-i18n="noResults">لا توجد نتائج مطابقة</h4>
+            <p data-i18n="noResultsSub">جرّب تغيير كلمة البحث أو الفلاتر</p>
+          </div>
+
+          <!-- Data Table -->
+          <table class="data-table" id="dataTable">
+            <thead>
+              <tr>
+                <th class="col-num  sortable" data-col="id">
+                  # <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-name sortable" data-col="name">
+                  <span data-i18n="colName">اسم الطالب</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-stage sortable" data-col="stage">
+                  <span data-i18n="colStage">المرحلة</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-subject sortable" data-col="subject">
+                  <span data-i18n="colSubject">المادة</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-year sortable" data-col="year">
+                  <span data-i18n="colYear">السنة</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-quizzes sortable" data-col="quizzesTotal">
+                  <span data-i18n="colQuizzes">الكوزات / 20</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-reports sortable" data-col="reportsTotal">
+                  <span data-i18n="colReports">التقارير / 20</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-activities sortable" data-col="activitiesTotal">
+                  <span data-i18n="colActivities">النشاط / 40</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-exam sortable" data-col="exam">
+                  <span data-i18n="colExam">الامتحان / 50</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-attendance sortable" data-col="attendance">
+                  <span data-i18n="colAttendance">الحضور / 5</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-participation sortable" data-col="participation">
+                  <span data-i18n="colParticipation">المشاركة / 5</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-support sortable" data-col="supportTotal">
+                  <span data-i18n="colSupport">الدعم / 10</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+                <th class="col-total sortable" data-col="grandTotal">
+                  <span data-i18n="colTotal">المجموع / 100</span>
+                  <span class="sort-indicator">↕</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- Rows injected by app.js -->
+            </tbody>
+          </table>
+
+        </div><!-- /table-scroll -->
+      </div><!-- /table-wrapper -->
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination">
+        <button class="page-btn" id="prevBtn" data-i18n="prev" disabled>السابق</button>
+        <div class="page-numbers" id="pageNumbers"></div>
+        <button class="page-btn" id="nextBtn" data-i18n="next">التالي</button>
+        <div class="page-info" id="pageInfo"></div>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <p data-i18n="footerText">جامعة الإمام جعفر الصادق © 2025</p>
+      <p class="footer-sub" data-i18n="footerSub">قسم هندسة تقنيات الحاسوب</p>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════
+       SCRIPTS  (order matters)
+       ══════════════════════════════════════════════ -->
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3a6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2451a3;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e6c96a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c8a951;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#shieldGrad)" />
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#goldGrad)" stroke-width="3" />
+  <circle cx="100" cy="100" r="83" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="4,3" />
+
+  <!-- Inner shield -->
+  <path d="M100 30 L145 55 L145 105 Q145 145 100 170 Q55 145 55 105 L55 55 Z"
+        fill="rgba(255,255,255,0.1)" stroke="url(#goldGrad)" stroke-width="2"/>
+
+  <!-- Circuit board / CPU icon in center -->
+  <rect x="78" y="78" width="44" height="44" rx="4" fill="none" stroke="#c8a951" stroke-width="2.5"/>
+  <rect x="85" y="85" width="30" height="30" rx="2" fill="rgba(200,169,81,0.25)" stroke="#c8a951" stroke-width="1.5"/>
+  
+  <!-- CPU pins -->
+  <line x1="85" y1="88" x2="78" y2="88" stroke="#c8a951" stroke-width="2"/>
+  <line x1="85" y1="95" x2="78" y2="95" stroke="#c8a951" stroke-width="2"/>
+  <line x1="85" y1="102" x2="78" y2="102" stroke="#c8a951" stroke-width="2"/>
+  <line x1="85" y1="109" x2="78" y2="109" stroke="#c8a951" stroke-width="2"/>
+  
+  <line x1="115" y1="88" x2="122" y2="88" stroke="#c8a951" stroke-width="2"/>
+  <line x1="115" y1="95" x2="122" y2="95" stroke="#c8a951" stroke-width="2"/>
+  <line x1="115" y1="102" x2="122" y2="102" stroke="#c8a951" stroke-width="2"/>
+  <line x1="115" y1="109" x2="122" y2="109" stroke="#c8a951" stroke-width="2"/>
+  
+  <line x1="88" y1="85" x2="88" y2="78" stroke="#c8a951" stroke-width="2"/>
+  <line x1="95" y1="85" x2="95" y2="78" stroke="#c8a951" stroke-width="2"/>
+  <line x1="102" y1="85" x2="102" y2="78" stroke="#c8a951" stroke-width="2"/>
+  <line x1="109" y1="85" x2="109" y2="78" stroke="#c8a951" stroke-width="2"/>
+  
+  <line x1="88" y1="115" x2="88" y2="122" stroke="#c8a951" stroke-width="2"/>
+  <line x1="95" y1="115" x2="95" y2="122" stroke="#c8a951" stroke-width="2"/>
+  <line x1="102" y1="115" x2="102" y2="122" stroke="#c8a951" stroke-width="2"/>
+  <line x1="109" y1="115" x2="109" y2="122" stroke="#c8a951" stroke-width="2"/>
+  
+  <!-- CPU center decoration -->
+  <rect x="91" y="91" width="18" height="18" rx="1" fill="#c8a951" opacity="0.4"/>
+  <text x="100" y="103" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="bold" font-family="Arial">IT</text>
+
+  <!-- Decorative stars -->
+  <circle cx="65" cy="60" r="2.5" fill="#c8a951" opacity="0.8"/>
+  <circle cx="135" cy="60" r="2.5" fill="#c8a951" opacity="0.8"/>
+  <circle cx="57" cy="100" r="2" fill="#c8a951" opacity="0.6"/>
+  <circle cx="143" cy="100" r="2" fill="#c8a951" opacity="0.6"/>
+
+  <!-- Arabic text at bottom of shield -->
+  <text x="100" y="152" text-anchor="middle" fill="#c8a951" font-size="8.5" font-family="Cairo, Arial" font-weight="bold">الإمام جعفر الصادق</text>
+
+  <!-- Bottom arc text area -->
+  <path id="bottomArc" d="M 30,140 A 75,75 0 0,0 170,140" fill="none"/>
+  <text fill="#c8a951" font-size="8" font-family="Cairo, Arial">
+    <textPath href="#bottomArc" startOffset="15%">هندسة تقنيات الحاسوب</textPath>
+  </text>
+</svg>
