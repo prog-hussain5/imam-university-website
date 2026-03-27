@@ -167,6 +167,19 @@
     });
   }
 
+  // Load custom stored students from localStorage
+  const storedStudentsStr = localStorage.getItem('customStudentsData');
+  if (storedStudentsStr) {
+    try {
+      const customStudents = JSON.parse(storedStudentsStr);
+      if (Array.isArray(customStudents)) {
+        students.push(...customStudents);
+      }
+    } catch(e) {
+      console.error("Error parsing custom students:", e);
+    }
+  }
+
   window.studentsData = students;
 
   // ── Unique subject list (for filter dropdown) ─────────────────────────────

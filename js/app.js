@@ -490,6 +490,87 @@
     $('langToggle').addEventListener('click', () => {
       setLanguage(state.lang === 'ar' ? 'en' : 'ar');
     });
+
+    // ── Add Student Modal Events ──────────────────────────────────────────
+    const openAddModalBtn = $('openAddModalBtn');
+    const addStudentModal = $('addStudentModal');
+    const closeModalBtn = $('closeModalBtn');
+    const addStudentForm = $('addStudentForm');
+
+    if (openAddModalBtn && addStudentModal) {
+      openAddModalBtn.addEventListener('click', () => {
+        addStudentModal.style.display = 'flex';
+      });
+
+      closeModalBtn.addEventListener('click', () => {
+        addStudentModal.style.display = 'none';
+      });
+
+      // Close modal on click outside
+      addStudentModal.addEventListener('click', (e) => {
+        if (e.target === addStudentModal) {
+          addStudentModal.style.display = 'none';
+        }
+      });
+
+      addStudentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Get values
+        const nameVal = $('newStName').value.trim();
+        const stageVal = $('newStStage').value;
+        const subjVal = $('newStSubject').value.trim();
+        const yearVal = $('newStYear').value;
+        const quizTot = parseFloat($('newStQuiz').value) || 0;
+        const repTot = parseFloat($('newStReport').value) || 0;
+        const actTot = parseFloat($('newStActivity').value) || 0;
+        const examVal = parseFloat($('newStExam').value) || 0;
+
+        // Calculate missing fields
+        const supportTotal = quizTot + repTot + actTot;
+        const grandTotal = supportTotal + examVal;
+
+        const newStudent = {
+          id: (new Date()).getTime() + Math.floor(Math.random() * 1000), // Random ID
+          name: nameVal,
+          gender: 'unknown',
+          stage: stageVal,
+          subject: subjVal,
+          year: yearVal,
+          quiz1: 0, quiz2: 0, quizzesTotal: quizTot,
+          report1: 0, report2: 0, reportsTotal: repTot,
+          activitiesTotal: actTot,
+          exam: examVal,
+          attendance: '', participation: '', // Optional or default values
+          supportTotal: supportTotal,
+          grandTotal: grandTotal
+        };
+
+        // Add to main state and window data
+        window.studentsData.push(newStudent);
+        state.allStudents = window.studentsData;
+
+        // Save custom to localStorage
+        try {
+          const stored = localStorage.getItem('customStudentsData');
+          const customArr = stored ? JSON.parse(stored) : [];
+          customArr.push(newStudent);
+          localStorage.setItem('customStudentsData', JSON.stringify(customArr));
+        } catch(err) {
+          console.error('Error saving custom student to localStorage', err);
+        }
+
+        // Cleanup and update view
+        addStudentForm.reset();
+        addStudentModal.style.display = 'none';
+        
+        // Re-populate subjects (so new subject appears in dropdown if new)
+        populateSubjectFilter();
+        
+        // Check if the current filter matches, re-run applyFilters
+        applyFilters();
+      });
+    }
   }
 
   // ── Init ───────────────────────────────────────────────────────────────────
